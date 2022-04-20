@@ -1,0 +1,11 @@
+import requests
+import json
+
+cidade = input('Escreva sua cidade: ')
+
+requisicao = requests.get('https://api.openweathermap.org/data/2.5/weather?q='+cidade+'&appid=580d138419a5ae01f19dd88dcc3c81c6')
+
+tempo = json.loads(requisicao.text)
+
+print('Condição do tempo: ',tempo['weather'][0]['main'])
+print('Temperatura: ',float(tempo['main']['temp']) - 273.15)
